@@ -1,0 +1,39 @@
+﻿@using Vidly.Controllers
+@model Vidly.ViewModels.MoviesCustomersViewModel
+
+@{
+    ViewBag.Title = "Movies";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            <h3>Movies</h3>
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    @if (Model.Movies.Count == 0)
+    {
+        <tr>
+            <td>
+                <p>We don't have any customers yet.</p>
+            </td>
+        </tr>
+    }
+    else
+    {
+        foreach (var movie in Model.Movies)
+        {
+            <tr>
+                <td>
+                    <a href="@Url.Action("EditMovie", "Movies", new {id= movie.Id})">@movie.Name</a>
+                </td>
+            </tr>
+        }
+    }
+  
+    </tbody>
+</table>
